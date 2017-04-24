@@ -1,0 +1,43 @@
+spittr项目
+1. pom.xml的结构
+
+<build>
+	<plugins>: 使用jetty服务器运行Java项目：无需安装，更轻量，适于调试和开发阶段使用
+	<plugins>： JDK 1.8，使用了一些新特性如lambda，部分框架也要求jdk版本1.8
+
+<dependencies>
+	<dependency>： 解决各种包的依赖
+
+<properties>
+	<failOnMissingWebXml>false</failOnMissingWebXml>
+	是否允许缺少web.xml
+
+
+2. 建立数据库
+假设已经设计完毕并且生成SQL语句
+将包含sql语句的文件放在src/main/resources的下面
+sql文件的名字任意指定，此处为schema.sql
+
+3. 根据数据库建立对应的实体
+每个表格建立一个对应的实体
+在src/main/建立一个java文件夹，之后将实体放入
+实体的包名一般是项目名.domain,
+
+4. 建立（DAO）Repository层，都是接口，用于存放对数据库的操作
+建立包： 项目名.repository
+
+5. 建立repository的实现。
+实现的方式可以有多种，此处用的jdbc。
+所以命名方式就使用了Jdbc+repository接口名
+
+6. 建立DataConfig。
+用于建立数据源
+配置辅助类，如JdbcTemplate，HibernateTemplate
+
+7. 测试repository层的功能
+建立src/test/java文件夹
+书写测试代码
+
+
+queryForObject查询出一个对象，此处的结果只能有一个。
+update方法用來執行增刪改操作

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="http://www.thymeleaf.org/thymelaf-extras-springsecurity4">
+  <head>
+    <title>Spitter</title>
+    <link rel="stylesheet" 
+          type="text/css" 
+          th:href="@{/resources/style.css}"></link>
+  </head>
+  <body>
+    <div id="header" th:include="page :: header"></div>
+  	<h1>Welcome to Spitter</h1>
+    <div sec:authorize="isAuthenticated()"><!-- 是否被验证登陆 -->
+    	Hello, <span sec:authentication="name">someone</span>
+    </div>
+    <a th:href="@{/spittles}">Spittles</a>|<a th:href="@{/spitter/register}"></a>
+    <div id="footer" th:include="page :: copy"></div>
+  </body>
+</html>
